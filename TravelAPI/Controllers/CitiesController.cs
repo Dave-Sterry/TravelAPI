@@ -17,16 +17,22 @@ namespace TravelAPI.Controllers
             _db = db;
         }
 
-        //GET api/cites
+        // [HttpGet("/All/")]
+        // public ActionResult<IEnumerable<City>> GetAll()
+        // {
+        //     return _db.Cities.ToList();
+        // }
+
+        //GET api/cities
         [HttpGet]
-        public ActionResult<IEnumerable<City>> Get(string name, int rating, string attraction)
+        public ActionResult<IEnumerable<City>> Get(string name, int rating, string attraction)  
         {
             var query = _db.Cities.AsQueryable();
             if (name !=null)
             {
                 query = query.Where(entry=>entry.Name == name);
             }
-            if (rating != null)
+            if (rating != 0)
             {
                 query = query.Where(entry => entry.Rating == rating);
             }
