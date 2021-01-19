@@ -8,7 +8,7 @@ namespace TravelAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CitiesController : ControllerBase 
+    public class CitiesController : ControllerBase
     {
         private TravelAPIContext _db;
 
@@ -19,9 +19,22 @@ namespace TravelAPI.Controllers
 
         //GET api/cites
         [HttpGet]
-        public ActionResult<IEnumerable<City>> Get()
+        public ActionResult<IEnumerable<City>> Get(string name, int rating, string attraction)
         {
-            return _db.Cities.ToList();
+            var query = _db.Cities.AsQueryable();
+            if (name !=null)
+            {
+                query = query.Where(entry=>entry.Name == name);
+            }
+            if (rating != null)
+            {
+                query = query.Where(entry => entry.Rating == rating);
+            }
+            if (attraction != null)
+            {
+                query = query.Where(entry => entry.Attraction == attraction);
+            }
+            return query.ToList();
         }
 
         //POST api/cities
