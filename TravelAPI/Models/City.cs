@@ -13,5 +13,8 @@ namespace TravelAPI.Models
         [Required]
         [Range(1, 10, ErrorMessage = "Rating must be between 1-10")]
         public int Rating { get; set; }
+        [Required]
+        [StringLength(400)]
+        public string Review { get; set; }
     }
 }

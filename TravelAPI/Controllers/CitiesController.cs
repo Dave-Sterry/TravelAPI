@@ -23,6 +23,7 @@ namespace TravelAPI.Controllers
         //     return _db.Cities.ToList();
         // }
 
+
         //GET api/cities
         [HttpGet]
         public ActionResult<IEnumerable<City>> Get(string name, int rating, string attraction)  
