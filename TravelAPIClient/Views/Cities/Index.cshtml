@@ -1,0 +1,16 @@
+<h1>All Cities:</h1>
+
+<ol>
+@foreach (City city in Model)
+{
+    <ul>
+        <li>ID: @city.CityId</li>
+        <li>Name: @city.Name</li>
+        <li>Rating: @city.Rating</li>
+        <li>Attraction: @city.Attraction</li>
+        <li>Review: @city.Review</li>
+    </ul>
+    <a href="/Cities/Details/@(city.CityId)"><p>View Details</p></a>
+    <br>
+}
+</ol>
