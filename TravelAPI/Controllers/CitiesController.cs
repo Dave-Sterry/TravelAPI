@@ -6,13 +6,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace TravelAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/Cities")]
     [ApiController]
-    public class CitiesController : ControllerBase
+    public class CitiesV1Controller : ControllerBase
     {
         private TravelAPIContext _db;
 
-        public CitiesController(TravelAPIContext db)
+        public CitiesV1Controller(TravelAPIContext db)
         {
             _db = db;
         }
@@ -23,10 +24,9 @@ namespace TravelAPI.Controllers
         //     return _db.Cities.ToList();
         // }
 
-
         //GET api/cities
         [HttpGet]
-        public ActionResult<IEnumerable<City>> Get(string name, int rating, string attraction)  
+        public ActionResult<IEnumerable<City>> Get(string name, int rating, string attraction, string review)
         {
             var query = _db.Cities.AsQueryable();
             if (name !=null)
@@ -42,6 +42,27 @@ namespace TravelAPI.Controllers
                 query = query.Where(entry => entry.Attraction == attraction);
             }
             return query.ToList();
+            // return new string[] { "Value1 from Version 1", "value2 from Version 1" };
+            // }
+        }
+    }
+
+    [ApiVersion("2.0")]
+    [Route("api/Cities")]
+    [ApiController]
+    public class CitiesV2Controller : ControllerBase
+    {
+        private TravelAPIContext _db;
+
+        public CitiesV2Controller(TravelAPIContext db)
+        {
+            _db = db;
+        }
+
+        [HttpGet]
+        public ActionResult<IEnumerable<City>> Get()
+        {
+            return _db.Cities.ToList();
         }
 
         //POST api/cities
