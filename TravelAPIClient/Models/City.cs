@@ -40,5 +40,16 @@ namespace TravelAPIClient.Models
             string jsonCity = JsonConvert.SerializeObject(city);
             var apiCallTask = ApiHelper.Post(jsonCity);
         }
+
+        public static void Put(City city)
+        {
+            string jsonCity = JsonConvert.SerializeObject(city);
+            var apiCallTask = ApiHelper.Put(city.CityId, jsonCity);
+        }
+
+        public static void Delete(int id)
+        {
+            var apiCallTask = ApiHelper.Delete(id);
+        }
     }
 }

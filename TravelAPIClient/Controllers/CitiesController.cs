@@ -28,5 +28,25 @@ namespace TravelAPIClient.Controllers
             var city = City.GetDetails(id);
             return View(city);
         }
+
+        public IActionResult Edit(int id)
+        {
+            var city = City.GetDetails(id);
+            return View(city);
+        }
+
+        [HttpPost]
+        public IActionResult Details(int id, City city)
+        {
+            city.CityId = id;
+            City.Put(city);
+            return RedirectToAction("Details", id);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            City.Delete(id);
+            return RedirectToAction("Index");
+        }
     }
 }
