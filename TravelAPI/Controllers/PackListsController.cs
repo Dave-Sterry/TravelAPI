@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace TravelAPI.Controllers
 {
+    [ApiVersion("2.0")]
+    [Route("api/Packlists")]
+    [ApiController]
     public class PacklistsController : ControllerBase
     {
         private TravelAPIContext _db;
@@ -14,7 +17,7 @@ namespace TravelAPI.Controllers
         {
             _db = db;
         }
-        // 
+
         [HttpGet]
         public ActionResult<IEnumerable<Packlist>> Get()
         {
@@ -25,17 +28,31 @@ namespace TravelAPI.Controllers
         public void Post([FromBody] Packlist packlist)
         {
             _db.Packlists.Add(packlist);
-            _db.SaveChanges;
+            _db.SaveChanges();
         }
-        
+
         //GET api/packlists/4
         [HttpGet("{id}")]
         public ActionResult<Packlist> Get(int id)
         {
-            return _db.Packlists.FirstOrDefault(entry => entry.ListId == id);
+            return _db.Packlists.FirstOrDefault(entry => entry.PacklistId == id);
         }
-        
+
         //PUT api/packlists/4
-     
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] Packlist packlist)
+        {
+            packlist.PacklistId = id;
+            _db.Entry(packlist).State = EntityState.Modified;
+            _db.SaveChanges();
+        }
+
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            var packlistToDelete = _db.Packlists.FirstOrDefault(entry => entry.PacklistId == id);
+            _db.Packlists.Remove(packlistToDelete);
+            _db.SaveChanges();
+        }
     }
 }
