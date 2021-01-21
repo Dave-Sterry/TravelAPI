@@ -9,11 +9,11 @@ namespace TravelAPI.Controllers
     [ApiVersion("2.0")]
     [Route("api/Packlists")]
     [ApiController]
-    public class PacklistsController : ControllerBase
+    public class PacklistsV2Controller : ControllerBase
     {
         private TravelAPIContext _db;
 
-        public PacklistsController(TravelAPIContext db)
+        public PacklistsV2Controller(TravelAPIContext db)
         {
             _db = db;
         }
