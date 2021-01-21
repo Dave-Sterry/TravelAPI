@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TravelAPI.Models
 {
-    public class PackList
+    public class Packlist
     {
         public int ListId { get; set; }
         [Required]

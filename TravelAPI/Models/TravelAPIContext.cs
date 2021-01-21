@@ -8,6 +8,7 @@ namespace TravelAPI.Models
         {
         }
         public DbSet<City> Cities { get; set; }
+        public DbSet<Packlist> Packlists { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
