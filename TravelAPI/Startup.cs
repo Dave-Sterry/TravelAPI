@@ -27,7 +27,7 @@ namespace TravelAPI
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddApiVersioning(o =>{o.ReportApiVersions = true;
             o.AssumeDefaultVersionWhenUnspecified = true;
-            o.DefaultApiVersion = new ApiVersion(2, 0);});
+            o.DefaultApiVersion = new ApiVersion(1, 0);});
 
              // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen();
@@ -54,6 +54,7 @@ namespace TravelAPI
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint("/swagger/v2/swagger.json", "My API V2");
             });
 
             // app.UseHttpsRedirection();

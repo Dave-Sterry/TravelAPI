@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace TravelAPI.Controllers
 {
     [ApiVersion("2.0")]
-    [Route("api/Packlists")]
+    [Route("api/{v:ApiVersion}/Packlists")]
     [ApiController]
     public class PacklistsV2Controller : ControllerBase
     {
