@@ -3,7 +3,7 @@ using RestSharp;
 
 namespace TravelAPIClient.Models
 {
-    class ApiHelper
+    class ApiHelperCities
     {
         public static async Task<string> GetAll()
         {
@@ -46,6 +46,16 @@ namespace TravelAPIClient.Models
             request.AddHeader("Content-Type", "application/json");
             var response = await client.ExecuteTaskAsync(request);
         }
+    }
 
+    class ApiHelperPacklist
+    {
+        public static async Task<string> GetAll()
+        {
+            RestClient client = new RestClient("http://localhost:5000/api");
+            RestRequest request = new RestRequest($"Packlists", Method.GET);
+            ver response = await client.ExecuteTaskAsync(request);
+            return response.Content;
+        }
     }
 }

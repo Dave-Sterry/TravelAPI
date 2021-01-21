@@ -19,6 +19,12 @@ namespace TravelAPI.Models
                     new City { CityId = 3, Name = "Philadelphia", Attraction = "Magic Gardens", Rating = 8, Review = "I hear there is lots of brotherly love here"},
                     new City { CityId = 4, Name = "Boston", Attraction = "North Eastern University", Rating = 1, Review = "has nice shrubs"}
                 );
+
+            builder.Entity<Packlist>()
+                .HasData(
+                    new Packlist { PacklistId = 1, Items = "Some stuff to pack, clothes, toiletries" },
+                    new Packlist { PacklistId = 2, Items = "socks" }
+                );
         }
     }
 }

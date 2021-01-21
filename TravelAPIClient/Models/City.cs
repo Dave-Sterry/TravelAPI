@@ -15,7 +15,7 @@ namespace TravelAPIClient.Models
 
         public static List<City> GetCities()
         {
-            var apiCallTask = ApiHelper.GetAll();
+            var apiCallTask = ApiHelperCities.GetAll();
             var result = apiCallTask.Result;
 
             JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
@@ -26,7 +26,7 @@ namespace TravelAPIClient.Models
 
         public static City GetDetails(int id)
         {
-            var apiCallTask = ApiHelper.Get(id);
+            var apiCallTask = ApiHelperCities.Get(id);
             var result = apiCallTask.Result;
 
             JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
@@ -38,18 +38,18 @@ namespace TravelAPIClient.Models
         public static void Post(City city)
         {
             string jsonCity = JsonConvert.SerializeObject(city);
-            var apiCallTask = ApiHelper.Post(jsonCity);
+            var apiCallTask = ApiHelperCities.Post(jsonCity);
         }
 
         public static void Put(City city)
         {
             string jsonCity = JsonConvert.SerializeObject(city);
-            var apiCallTask = ApiHelper.Put(city.CityId, jsonCity);
+            var apiCallTask = ApiHelperCities.Put(city.CityId, jsonCity);
         }
 
         public static void Delete(int id)
         {
-            var apiCallTask = ApiHelper.Delete(id);
+            var apiCallTask = ApiHelperCities.Delete(id);
         }
     }
 }

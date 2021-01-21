@@ -4,7 +4,7 @@ namespace TravelAPI.Models
 {
     public class Packlist
     {
-        public int ListId { get; set; }
+        public int PacklistId { get; set; }
         [Required]
         [StringLength(400)]
         public string Items { get; set; }
