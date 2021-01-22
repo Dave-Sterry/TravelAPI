@@ -164,7 +164,7 @@ https://localhost:5000/api/packlist/
 ```
 {
   "Id": 1,
-  "Items": "Toothbrush, sandles, hot tob shorts"
+  "Items": "Toothbrush, sandles, hot tub shorts"
 }
 ```
 
